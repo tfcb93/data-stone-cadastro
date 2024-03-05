@@ -24,7 +24,7 @@ export const useClientsStore = defineStore('clients', {
             });
         },
         remove(id: string) {
-            const removeIndex = this.clients.findIndex((client) => client.id === id);
+            const removeIndex = this.clients.findIndex((client:ClientType) => client.id === id);
             this.clients = [...this.clients.slice(0, removeIndex), ...this.clients.slice(removeIndex + 1)];
             return id;
         }
