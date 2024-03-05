@@ -15,9 +15,6 @@ export const useClientsStore = defineStore('clients', {
             this.clients = [...this.clients, newClientWithUUID];
             return newId;
         },
-        read() {
-    
-        },
         update(id: string, data: ClientType) {
             this.clients = this.clients.map((client: ClientType) => {
                 if(client.id === id) {
