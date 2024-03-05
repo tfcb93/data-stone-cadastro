@@ -5,7 +5,7 @@ import { createPinia, setActivePinia } from 'pinia';
 
 describe('Client tests', () => {
     beforeEach(() => {
-        setActivePinia(createPinia())
+        setActivePinia(createPinia());
     });
     test('Creates a new client', () => {
         const store = useClientsStore();
@@ -42,7 +42,7 @@ describe('Client tests', () => {
             )
         )
     });
-    test('Update an specific client with new data', () => {
+    test('Updates an specific client with new data', () => {
         const store = useClientsStore();
         const user1:ClientType = {name: 'John Doe', document: 'blank', telephone: '999-9999', email: 'johndoe@test.com', active: true};
 

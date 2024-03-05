@@ -6,3 +6,9 @@ export interface ClientType {
     email: string,
     active: boolean
 }
+
+export interface ProductType {
+    id ?: string,
+    name: string,
+    active: boolean
+}
