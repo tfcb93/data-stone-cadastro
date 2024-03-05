@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { ref } from 'vue';
-    import Cliente from './Cliente.vue';
-    import Produto from './Produto.vue';
+    import Client from './Client.vue';
+    import Product from './Product.vue';
 
     enum screenTypeEnum {
         CLIENTE,
@@ -13,20 +13,20 @@
 
 
 <template>
-    <div class="cadastro">
-        <div class="cadastro--header">
+    <div class="register">
+        <div class="register--header">
             <button @click="screenType = screenTypeEnum.CLIENTE">Cliente</button>
             <button @click="screenType = screenTypeEnum.PRODUTO">Produto</button>
         </div>
-        <div class="cadastro--form-container">
-            <Cliente v-if="screenType === screenTypeEnum.CLIENTE" />
-            <Produto v-else />
+        <div class="register--form-container">
+            <Client v-if="screenType === screenTypeEnum.CLIENTE" />
+            <Product v-else />
         </div>
     </div>
 </template>
 
 <style scoped>
-.cadastro {
+.register {
     border: 1px solid black;
     border-radius: 4px;
     min-width: 300px;
@@ -36,10 +36,10 @@
 
 }
 
-.cadastro--header {
+.register--header {
     padding: 5px 10px;
     display: flex;
     justify-content: center;
     gap: 25px;
 }
-</style>
+</style>./Client.vue./Product.vue

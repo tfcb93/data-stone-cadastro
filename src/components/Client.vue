@@ -3,24 +3,24 @@
 </script>
 
 <template>
-    <div class="cliente--form">
-        <span class="cliente--form-input">
+    <div class="client--form">
+        <span class="client--form-input">
             <label for="name">Nome: </label>
             <input id="name" type="text" />
         </span>
-        <span class="cliente--form-input">
+        <span class="client--form-input">
             <label for="document">Documento: </label>
             <input id="document" type="text" />
         </span>
-        <span class="cliente--form-input">
+        <span class="client--form-input">
             <label for="telephone">Telefone: </label>
             <input id="telephone" type="text" />
         </span>
-        <span class="cliente--form-input">
+        <span class="client--form-input">
             <label for="email">E-mail: </label>
             <input id="email" type="text" />
         </span>
-        <span class="cliente--form-input cliente--form-input__active">
+        <span class="client--form-input client--form-input__active">
             <legend>Ativo: </legend>
             <span>
                 <input id="active-yes" type="radio" />
@@ -36,17 +36,17 @@
 
 
 <style scoped>
-    .cliente--form {
+    .client--form {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .cliente--form-input {
+    .client--form-input {
 
     }
 
-    .cliente--form-input__active {
+    .client--form-input__active {
         display: flex;
         gap: 10px;
     }
