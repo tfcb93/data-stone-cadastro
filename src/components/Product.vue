@@ -7,12 +7,12 @@
 </script>
 
 <template>
-    <div class="produto--form">
-        <span class="produto--form-input">
+    <div class="product--form">
+        <span class="product--form-input">
             <label for="name">Nome: </label>
             <input id="name" type="text" />
         </span>
-        <span class="produto--form-input produto--form-input__active">
+        <span class="product--form-input product--form-input__active">
             <legend>Ativo: </legend>
             <span>
                 <input id="active-yes" type="radio" />
@@ -28,18 +28,18 @@
 
 
 <style scoped>
-    .produto--form {
+    .product--form {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .produto--form-input {
+    .product--form-input {
         
     }
 
 
-    .produto--form-input__active {
+    .product--form-input__active {
         display: flex;
         gap: 10px;
     }

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Cadastro from './components/Cadastro.vue'
+import Register from './components/Register.vue'
 </script>
 
 <template>
-  <Cadastro />
+  <Register />
 </template>
 
 <style scoped>
@@ -20,3 +20,4 @@ import Cadastro from './components/Cadastro.vue'
   filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
+./components/Register.vue
