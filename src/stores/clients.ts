@@ -18,8 +18,13 @@ export const useClientsStore = defineStore('clients', {
         read() {
     
         },
-        update() {
-    
+        update(id: string, data: ClientType) {
+            this.clients = this.clients.map((client: ClientType) => {
+                if(client.id === id) {
+                    return data;
+                }
+                return client;
+            });
         },
         remove(id: string) {
             const removeIndex = this.clients.findIndex((client) => client.id === id);

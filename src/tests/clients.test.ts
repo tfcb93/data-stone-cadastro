@@ -42,6 +42,22 @@ describe('Client tests', () => {
             )
         )
     });
+    test('Update an specific client with new data', () => {
+        const store = useClientsStore();
+        const user1:ClientType = {name: 'John Doe', document: 'blank', telephone: '999-9999', email: 'johndoe@test.com', active: true};
+
+        const user1Id = store.create(user1);
+
+        store.update(user1Id, {...user1, email: 'superjohndoebros@test.com'});
+
+        expect(store.clients).toEqual(
+            expect.arrayContaining(
+                [
+                    expect.objectContaining({...user1, email: 'superjohndoebros@test.com'})
+                ]
+            )
+        )
+    })
     
 
 })
