@@ -4,7 +4,8 @@ export interface ClientType {
     document: string | number,
     telephone: string,
     email: string,
-    active: boolean
+    active: boolean,
+    products?: Array<string>
 }
 
 export interface ProductType {
