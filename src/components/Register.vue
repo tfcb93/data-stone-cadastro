@@ -2,25 +2,30 @@
     import { ref } from 'vue';
     import Client from './Client.vue';
     import Product from './Product.vue';
+    import { registerEnum } from '../enum';
 
-    enum screenTypeEnum {
-        CLIENTE,
-        PRODUTO
-    }
+    defineProps<{
+        closeModal?:any
+    }>();
 
-    const screenType = ref<screenTypeEnum>(screenTypeEnum.CLIENTE);
+
+    const screenType = ref<registerEnum>(registerEnum.CLIENTE);
 </script>
 
 
 <template>
     <div class="register">
         <div class="register--header">
-            <button @click="screenType = screenTypeEnum.CLIENTE">Cliente</button>
-            <button @click="screenType = screenTypeEnum.PRODUTO">Produto</button>
+            <h3>Cadastro</h3>
+            <button v-if="closeModal" class="register--close-button" v-on:click="closeModal">X</button>
+        </div>
+        <div class="register--selector">
+            <button @click="screenType = registerEnum.CLIENTE">Cliente</button>
+            <button @click="screenType = registerEnum.PRODUTO">Produto</button>
         </div>
         <div class="register--form-container">
-            <Client v-if="screenType === screenTypeEnum.CLIENTE" />
-            <Product v-else />
+            <Client v-if="screenType === registerEnum.CLIENTE" :close-modal="closeModal" />
+            <Product v-else :close-modal="closeModal" />
         </div>
     </div>
 </template>
@@ -37,9 +42,23 @@
 }
 
 .register--header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.register--close-button {
+    position: absolute;
+    top: 30%;
+    right: 8px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.register--selector {
     padding: 5px 10px;
     display: flex;
     justify-content: center;
     gap: 25px;
 }
-</style>./Client.vue./Product.vue
+</style>

@@ -18,7 +18,7 @@ export const useProductsStore = defineStore('products', {
         update(id: string, data: ProductType) {
             this.products = this.products.map((product: ProductType) => {
                 if(product.id === id) {
-                    return data;
+                    return {...data, id};
                 }
                 return product;
             });
