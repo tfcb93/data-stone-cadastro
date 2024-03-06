@@ -60,7 +60,10 @@ import { useClientsStore } from '../stores/clients';
             </span>
         </span>
     </div>
-    <button v-on:click="saveClient()">Cadastrar</button>
+    <div>
+        <button v-on:click="saveClient()">Cadastrar</button>
+        <button v-if="props.closeModal" v-on:click="() => {if (props.closeModal) props.closeModal()}">Cancelar</button>
+    </div>
 </template>
 
 

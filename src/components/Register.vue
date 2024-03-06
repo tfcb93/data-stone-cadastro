@@ -25,7 +25,7 @@
         </div>
         <div class="register--form-container">
             <Client v-if="screenType === registerEnum.CLIENTE" :close-modal="closeModal" />
-            <Product v-else />
+            <Product v-else :close-modal="closeModal" />
         </div>
     </div>
 </template>
