@@ -2,7 +2,7 @@
 import { useClientsStore } from '../stores/clients';
 
     const clientName = defineModel('clientName',{type: String});
-    const clientDocument = defineModel('clientDocument',{type: String});
+    const clientDocument = defineModel('clientDocument',{default:"", type: String});
     const clientTelephone = defineModel('clientTelephone', {type: String});
     const clientEmail = defineModel('clientEmail', {type: String});
     const clientActive = defineModel('clientActive', {default: true, type:Boolean});
@@ -16,7 +16,7 @@ import { useClientsStore } from '../stores/clients';
     const saveClient = () => {
         store.create({
             name: clientName.value!,
-            document:clientDocument.value!,
+            document:clientDocument.value,
             email:clientEmail.value!,
             telephone: clientTelephone.value!,
             active: clientActive.value!
