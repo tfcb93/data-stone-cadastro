@@ -9,7 +9,7 @@
 </script>
 
 <template>
-    <v-dialog max-width="500">
+    <v-dialog max-width="500" transition="fade-transition">
         <template v-slot:activator="{props: activatorProps}">
           <v-btn
             v-bind="activatorProps"
