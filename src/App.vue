@@ -14,13 +14,19 @@
 
 <template>
     <v-toolbar title="Cadastro" density="compact">
-      <v-btn text="Clientes" @:click="() => changeView('clients')" variant="flat"></v-btn>
-      <v-btn text="Produtos" @:click="() => changeView('products')" variant="flat" class="ml-2"></v-btn>
+      <v-btn text="Clientes" @:click="() => changeView('clients')" variant="flat" :class="{'bg-primary': actualView == 'clients'}"></v-btn>
+      <v-btn text="Produtos" @:click="() => changeView('products')" variant="flat" class="ml-2" :class="{'bg-primary': actualView == 'products'}"></v-btn>
       <v-spacer></v-spacer>
       <Register />
     </v-toolbar>
-    <ClientsView v-if="actualView === 'clients'" />
-    <ProductsView v-if="actualView === 'products'" />
+    <v-container>
+      <v-col md="12">
+        <v-row justify="center">
+          <ClientsView v-if="actualView === 'clients'" />
+          <ProductsView v-if="actualView === 'products'" />
+        </v-row>
+      </v-col>
+    </v-container>
 </template>
 
 <style scoped>

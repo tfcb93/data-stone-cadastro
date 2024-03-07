@@ -27,28 +27,33 @@ import ClientEdit from '../components/ClientEdit.vue';
             </v-sheet>
         </v-row>
     </v-container>
-    <v-list lines="two">
-        <v-list-item
-            v-for="(client, index) in store.clients"
-            :key="client.id"
-        >
-            <ClientEdit
-                v-if="isEditing === client.id"
-                :client-name="client.name"
-                :client-document="client.document"
-                :client-telephone="client.telephone"
-                :client-email="client.email"
-                :client-active="client.active"
-                :id="client.id!"
-                :close-editing="closeEditing"
-            />
-            <ClientCard v-else
-                :client="client"
-                :open-editing="() => openEditing(client.id!)"
-                :delete-client="() => store.remove(client.id!)"
-            />
-        </v-list-item>
-    </v-list>
+    <v-container>
+        <v-sheet class="text-h4 px-8">
+                Clientes
+            </v-sheet>
+        <v-list lines="two">
+            <v-list-item
+                v-for="(client, index) in store.clients"
+                :key="client.id"
+            >
+                <ClientEdit
+                    v-if="isEditing === client.id"
+                    :client-name="client.name"
+                    :client-document="client.document"
+                    :client-telephone="client.telephone"
+                    :client-email="client.email"
+                    :client-active="client.active"
+                    :id="client.id!"
+                    :close-editing="closeEditing"
+                />
+                <ClientCard v-else
+                    :client="client"
+                    :open-editing="() => openEditing(client.id!)"
+                    :delete-client="() => store.remove(client.id!)"
+                />
+            </v-list-item>
+        </v-list>
+    </v-container>
 
 </template>
 

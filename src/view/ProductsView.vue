@@ -30,6 +30,9 @@ import { ref } from 'vue';
         </v-row>
     </v-container>
     <v-container>
+        <v-sheet class="text-h4 px-4">
+            Produtos
+        </v-sheet>
         <v-row no-gutters>
             <v-col
                 v-for="(product, index) in store.products"
