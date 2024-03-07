@@ -38,7 +38,10 @@ import { useClientsStore } from '../stores/clients';
         :label="clientActive ? 'Ativo' : 'Inativo'"
         inset
     ></v-switch>
-    <v-btn color="primary" @click="saveClient">Cadastrar</v-btn>
+    <v-row no-gutters>
+        <v-btn color="primary" @click="saveClient">Cadastrar</v-btn>
+        <v-btn class="ml-2" @click="closeModal">Cancelar</v-btn>
+    </v-row>
 </template>
 
 

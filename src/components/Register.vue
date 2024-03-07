@@ -18,7 +18,10 @@
           ></v-btn>
         </template>
         <template v-slot:default="{ isActive }">
-          <v-card title="Cadastro" class="ma-2 pa-4">
+          <v-card class="ma-2 pa-4">
+            <v-card-title>
+                Cadastro
+            </v-card-title>
             <v-card-actions>
                 <v-btn
                     text="Cliente"
@@ -31,11 +34,6 @@
                     @click="screenType = registerEnum.PRODUTO"
                     :active="screenType === registerEnum.PRODUTO"
                     color="primary"
-                ></v-btn>
-                <v-spacer></v-spacer>
-                <v-btn
-                icon="$close"
-                @click="isActive.value = false"
                 ></v-btn>
             </v-card-actions>
             <ClientForm v-if="screenType === registerEnum.CLIENTE" :close-modal="() => isActive.value = false" />
