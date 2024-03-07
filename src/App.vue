@@ -13,7 +13,10 @@
 </script>
 
 <template>
-    <v-toolbar title="Cadastro" density="compact">
+    <v-toolbar density="compact">
+      <v-toolbar-title class="d-none d-sm-flex">
+        Cadastro
+      </v-toolbar-title>
       <v-btn text="Clientes" @:click="() => changeView('clients')" variant="flat" :class="{'bg-primary': actualView == 'clients'}"></v-btn>
       <v-btn text="Produtos" @:click="() => changeView('products')" variant="flat" class="ml-2" :class="{'bg-primary': actualView == 'products'}"></v-btn>
       <v-spacer></v-spacer>

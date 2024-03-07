@@ -27,7 +27,7 @@ import ClientEdit from '../components/ClientEdit.vue';
             </v-sheet>
         </v-row>
     </v-container>
-    <v-container>
+    <v-container v-else>
         <v-sheet class="text-h4 px-8">
                 Clientes
             </v-sheet>

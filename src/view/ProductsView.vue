@@ -29,7 +29,7 @@ import { ref } from 'vue';
             </v-sheet>
         </v-row>
     </v-container>
-    <v-container>
+    <v-container v-else>
         <v-sheet class="text-h4 px-4">
             Produtos
         </v-sheet>
@@ -37,7 +37,7 @@ import { ref } from 'vue';
             <v-col
                 v-for="(product, index) in store.products"
                 :key="product.id"
-                cols="8"
+                cols="12"
                 md="4"
             >
                 <v-sheet class="ma-2 pa-2">
