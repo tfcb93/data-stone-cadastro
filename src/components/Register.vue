@@ -28,12 +28,14 @@
                     @click="screenType = registerEnum.CLIENTE"
                     :active="screenType === registerEnum.CLIENTE"
                     color="primary"
+                    variant="flat"
                 ></v-btn>
                 <v-btn
                     text="Produto"
                     @click="screenType = registerEnum.PRODUTO"
                     :active="screenType === registerEnum.PRODUTO"
                     color="primary"
+                    variant="flat"
                 ></v-btn>
             </v-card-actions>
             <ClientForm v-if="screenType === registerEnum.CLIENTE" :close-modal="() => isActive.value = false" />

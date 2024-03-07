@@ -30,22 +30,24 @@
 </script>
 
 <template>
-    <v-card title="Editar Cliente">
-        <v-text-field label="Nome" v-model="clientName"></v-text-field>
-        <v-text-field label="Nome" v-model="clientDocument"></v-text-field>
-        <v-text-field label="Nome" v-model="clientTelephone"></v-text-field>
-        <v-text-field label="Nome" v-model="clientEmail"></v-text-field>
-        <v-switch
-            v-model="clientActive"
-            color="primary"
-            :label="clientActive ? 'Ativo' : 'Inativo'"
-            inset
-        ></v-switch>
-        <v-card-actions>
-            <v-btn color="primary" @click="saveClient">Editar</v-btn>
-            <v-btn color="secondary" @click="props.closeEditing">Cancelar</v-btn>
-        </v-card-actions>
-    </v-card>
+    <v-container>
+        <v-card title="Editar Cliente" class="pa-4">
+            <v-text-field label="Nome" v-model="clientName"></v-text-field>
+            <v-text-field label="Nome" v-model="clientDocument"></v-text-field>
+            <v-text-field label="Nome" v-model="clientTelephone"></v-text-field>
+            <v-text-field label="Nome" v-model="clientEmail"></v-text-field>
+            <v-switch
+                v-model="clientActive"
+                color="primary"
+                :label="clientActive ? 'Ativo' : 'Inativo'"
+                inset
+            ></v-switch>
+            <v-card-actions>
+                <v-btn color="primary" @click="saveClient" variant="flat">Salvar</v-btn>
+                <v-btn @click="props.closeEditing" variant="flat">Cancelar</v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-container>
 
 </template>
 

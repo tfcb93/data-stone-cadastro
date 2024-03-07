@@ -31,8 +31,8 @@ import { useProductsStore } from '../stores/products';
         inset
     ></v-switch>
     <v-row no-gutters>
-        <v-btn color="primary" @click="saveProduct">Cadastrar</v-btn>
-        <v-btn class="ml-2" @click="closeModal">Cancelar</v-btn>
+        <v-btn color="primary" @click="saveProduct" variant="flat">Cadastrar</v-btn>
+        <v-btn class="ml-2" @click="closeModal" variant="flat">Cancelar</v-btn>
     </v-row>
 </template>
 

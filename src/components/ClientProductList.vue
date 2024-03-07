@@ -56,7 +56,7 @@
                         <v-btn
                             v-bind="activatorProps"
                             text="Adicionar"
-                            variant="elevated"
+                            variant="flat"
                             color="primary"
                             :disabled="notLinkedProducts.length === 0 || !client.active"
                         ></v-btn>
@@ -75,10 +75,13 @@
                             <v-card-actions>
                                 <v-btn
                                 text="Adicionar"
+                                variant="flat"
+                                color="primary"
                                 @click="() => {addProductsToClient(); isActive.value = false}"
                                 ></v-btn>
                                 <v-btn
                                 text="Cancelar"
+                                variant="flat"
                                 @click="() => {selectedProducts = []; isActive.value = false}"
                                 ></v-btn>
                             </v-card-actions>
@@ -89,12 +92,12 @@
                 </v-col>
                 <v-list lines="one">
                     <v-list-item v-for="(product, index) in linkedProductsData">
-                        <v-card>
-                            <v-row justify="space-between" align="center">
+                        <v-card :variant="index % 2 === 1 ? 'tonal' : 'flat'" >
+                            <v-row justify="space-between" align="center" class="py-2 px-4">
                                 <v-card-title>
                                     {{ product.name }}
                                 </v-card-title>
-                                <v-btn text="deletar" @:click="() => removeProductFromClient(product.id!)"></v-btn>
+                                <v-btn color="red-accent-4" text="Excluir" variant="flat" @:click="() => removeProductFromClient(product.id!)"></v-btn>
                             </v-row>
                         </v-card>
                     </v-list-item>

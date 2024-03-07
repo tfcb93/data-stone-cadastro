@@ -14,8 +14,8 @@
 
 <template>
     <v-toolbar title="Cadastro" density="compact">
-      <v-btn text="Clientes" @:click="() => changeView('clients')"></v-btn>
-      <v-btn text="Produtos" @:click="() => changeView('products')"></v-btn>
+      <v-btn text="Clientes" @:click="() => changeView('clients')" variant="flat"></v-btn>
+      <v-btn text="Produtos" @:click="() => changeView('products')" variant="flat" class="ml-2"></v-btn>
       <v-spacer></v-spacer>
       <Register />
     </v-toolbar>

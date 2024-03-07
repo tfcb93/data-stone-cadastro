@@ -33,8 +33,8 @@
             inset
         ></v-switch>
         <v-card-actions>
-            <v-btn color="primary" @click="saveProduct">Editar</v-btn>
-            <v-btn color="secondary" @click="props.closeEditing">Cancelar</v-btn>
+            <v-btn color="primary" @click="saveProduct" variant="flat">Salvar</v-btn>
+            <v-btn @click="props.closeEditing" variant="flat">Cancelar</v-btn>
         </v-card-actions>
     </v-card>
 </template>

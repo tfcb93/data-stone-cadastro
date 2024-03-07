@@ -14,16 +14,16 @@ import { ProductType } from '../types';
 </script>
 
 <template>
-    <v-card>
+    <v-card :variant="product.active ? 'elevated' : 'tonal'">
         <template v-slot:title>
             {{ product.name }}
         </template>
-        <v-card-text>
+        <template v-slot:subtitle>
             Ativo: {{ product.active ? "Sim" : "Não" }}
-        </v-card-text>
+        </template>
         <v-card-actions>
-            <v-btn colort="primary" text="editar" @:click="props.edit"></v-btn>
-            <v-btn color="warning" text="deletar" @:click="() => store.remove(product.id!)"></v-btn>
+            <v-btn colort="primary" text="editar" @:click="props.edit" variant="flat"></v-btn>
+            <v-btn color="red-accent-4" text="Excluir" @:click="() => store.remove(product.id!)" variant="flat"></v-btn>
         </v-card-actions>
     </v-card>
 </template>

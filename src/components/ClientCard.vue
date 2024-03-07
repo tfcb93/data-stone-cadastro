@@ -20,8 +20,8 @@ import ClientProductList from '../components/ClientProductList.vue';
                 </v-card-title>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn text="Editar" @click="openEditing"></v-btn>
-                    <v-btn text="Excluir" @click="deleteClient"></v-btn>
+                    <v-btn text="Editar" @click="openEditing" variant="flat"></v-btn>
+                    <v-btn text="Excluir" @click="deleteClient" color="red-accent-4" variant="flat"></v-btn>
                 </v-card-actions>
             </v-row>
             <v-table class="text-caption" density="compact">
