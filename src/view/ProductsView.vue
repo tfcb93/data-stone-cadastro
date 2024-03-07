@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { useProductsStore } from '../stores/products';
+
 import ProductCard from '../components/ProductCard.vue';
 import ProductEdit from '../components/ProductEdit.vue';
+import { useProductsStore } from '../stores/products';
 import { ref } from 'vue';
 
     const isEditing = ref<null|string>(null);
+
+    const store = useProductsStore();
 
     const openEditing = (id: string) => {
         isEditing.value = id;
@@ -14,50 +17,43 @@ import { ref } from 'vue';
         isEditing.value = null;
     }
 
-    const state = useProductsStore();
+    
 
 </script>
 
 <template>
-    <div v-if="state.products.length <= 0">
-        Não há produtos cadastrados
-    </div>
-    <div v-else v-for="(product, index) in state.products">
-        <div class="productsView--product-container">
-            <ProductEdit
-                v-if="isEditing === product.id"
-                :product-name="product.name"
-                :product-active="product.active"
-                :id="product.id!"
-                :close-editing="closeEditing"
-            />
-            <ProductCard v-else :product="product"/>
-            <div v-if="!isEditing" class="productsView--product-options">
-                <button v-on:click="() => openEditing(product.id!)">Editar</button>
-                <button v-on:click="() => state.remove(product.id!)">Excluir</button>
-            </div>
-        </div>
-    </div>
+    <v-container v-if="store.products.length <= 0">
+        <v-row class="my-8" justify="center">
+            <v-sheet class="text-h5">
+                Não há produtos cadastrados
+            </v-sheet>
+        </v-row>
+    </v-container>
+    <v-container v-else>
+        <v-sheet class="text-h4 px-4">
+            Produtos
+        </v-sheet>
+        <v-row no-gutters>
+            <v-col
+                v-for="(product, index) in store.products"
+                :key="product.id"
+                cols="12"
+                md="4"
+            >
+                <v-sheet class="ma-2 pa-2">
+                    <ProductEdit
+                        v-if="isEditing === product.id"
+                        :product-name="product.name"
+                        :product-active="product.active"
+                        :id="product.id!"
+                        :close-editing="closeEditing"
+                    />
+                    <ProductCard v-else :product="product" :edit="() => openEditing(product.id!)"/>
+                </v-sheet>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <style scoped>
-.productsView--product-container {
-    border: 1px solid black;
-    padding: 5px 10px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.productsView--product-container__title {
-    font-weight: regular;
-}
-
-.productsView--product-options {
-    display: flex;
-    flex-direction: column;
-}
-
-.productsView--product-container__data {
-    font-weight: bold;
-}
 </style>

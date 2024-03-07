@@ -15,54 +15,48 @@ import ClientEdit from '../components/ClientEdit.vue';
         isEditing.value = null;
     }
 
-    const state = useClientsStore();
+    const store = useClientsStore();
 
 </script>
 
 <template>
-    <div v-if="state.clients.length <= 0">
-        Não há clientes cadastrados
-    </div>
-    <div v-else v-for="(client, index) in state.clients">
-        <div class="clientsView--client-container">
-        <ClientEdit
-            v-if="isEditing === client.id"
-            :client-name="client.name"
-            :client-document="client.document"
-            :client-telephone="client.telephone"
-            :client-email="client.email"
-            :client-active="client.active"
-            :id="client.id!"
-            :close-editing="closeEditing"
-        />
-            <ClientCard v-else :client="client"/>
-            <div v-if="!isEditing" class="clientsView--client-options">
-                <button v-on:click="() => openEditing(client.id!)">Editar</button>
-                <button v-on:click="() => state.remove(client.id!)">Excluir</button>
-            </div>
-        </div>
-    </div>
+    <v-container v-if="store.clients.length <= 0">
+        <v-row class="my-8" justify="center">
+            <v-sheet class="text-h5">
+                Não há clientes cadastrados
+            </v-sheet>
+        </v-row>
+    </v-container>
+    <v-container v-else>
+        <v-sheet class="text-h4 px-8">
+                Clientes
+            </v-sheet>
+        <v-list lines="two">
+            <v-list-item
+                v-for="(client, index) in store.clients"
+                :key="client.id"
+            >
+                <ClientEdit
+                    v-if="isEditing === client.id"
+                    :client-name="client.name"
+                    :client-document="client.document"
+                    :client-telephone="client.telephone"
+                    :client-email="client.email"
+                    :client-active="client.active"
+                    :id="client.id!"
+                    :close-editing="closeEditing"
+                />
+                <ClientCard v-else
+                    :client="client"
+                    :open-editing="() => openEditing(client.id!)"
+                    :delete-client="() => store.remove(client.id!)"
+                />
+            </v-list-item>
+        </v-list>
+    </v-container>
 
 </template>
 
 <style scoped>
-.clientsView--client-container {
-    border: 1px solid black;
-    padding: 5px 10px;
-    display: flex;
-    justify-content: space-between;
-}
 
-.clientsView--client-container__title {
-    font-weight: regular;
-}
-
-.clientsView--client-options {
-    display: flex;
-    flex-direction: column;
-}
-
-.clientsView--client-container__data {
-    font-weight: bold;
-}
 </style>

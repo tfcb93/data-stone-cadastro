@@ -1,38 +1,32 @@
 <script setup lang="ts">
+import { useProductsStore } from '../stores/products';
 import { ProductType } from '../types';
 
 
-    defineProps<{product: ProductType}>();
+    const props = defineProps<{
+        product: ProductType,
+        edit: () => void
+    }>();
+
+    const store = useProductsStore();
+
 
 </script>
 
 <template>
-    <div class="productcard">
-        <div class="productcard--data productcard--data__name">
-            <span class="productcard--data__title">Nome: </span>
-            <span class="productcard--data__data">
-                {{ product.name }}
-            </span>
-        </div>
-        <div class="productcard--data productcard--data__active">
-            <span class="productcard--data__title">Ativo: </span>
-            <span class="productcard--data__data">
-                {{ product.active ? "Sim" : "Não" }}
-            </span>
-        </div>
-    </div>
+    <v-card :variant="product.active ? 'elevated' : 'tonal'">
+        <template v-slot:title>
+            {{ product.name }}
+        </template>
+        <template v-slot:subtitle>
+            Ativo: {{ product.active ? "Sim" : "Não" }}
+        </template>
+        <v-card-actions>
+            <v-btn colort="primary" text="editar" @:click="props.edit" variant="flat"></v-btn>
+            <v-btn color="red-accent-4" text="Excluir" @:click="() => store.remove(product.id!)" variant="flat"></v-btn>
+        </v-card-actions>
+    </v-card>
 </template>
 
 <style scoped>
-
-.productcard {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-}
-
-.productcard--data__title {
-    font-weight: bold;
-}
-
 </style>
