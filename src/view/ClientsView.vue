@@ -20,9 +20,13 @@ import ClientEdit from '../components/ClientEdit.vue';
 </script>
 
 <template>
-    <div v-if="store.clients.length <= 0">
-        Não há clientes cadastrados
-    </div>
+    <v-container v-if="store.clients.length <= 0">
+        <v-row class="my-8" justify="center">
+            <v-sheet class="text-h5">
+                Não há clientes cadastrados
+            </v-sheet>
+        </v-row>
+    </v-container>
     <v-list lines="two">
         <v-list-item
             v-for="(client, index) in store.clients"

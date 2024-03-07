@@ -22,10 +22,13 @@ import { ref } from 'vue';
 </script>
 
 <template>
-    <div v-if="store.products.length <= 0">
-        Não há produtos cadastrados
-    </div>
-
+    <v-container v-if="store.products.length <= 0">
+        <v-row class="my-8" justify="center">
+            <v-sheet class="text-h5">
+                Não há produtos cadastrados
+            </v-sheet>
+        </v-row>
+    </v-container>
     <v-container>
         <v-row no-gutters>
             <v-col
