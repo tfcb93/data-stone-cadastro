@@ -15,15 +15,23 @@ import ClientEdit from '../components/ClientEdit.vue';
         isEditing.value = null;
     }
 
-    const state = useClientsStore();
+    const store = useClientsStore();
 
 </script>
 
 <template>
-    <div v-if="state.clients.length <= 0">
+    <div v-if="store.clients.length <= 0">
         Não há clientes cadastrados
     </div>
-    <div v-else v-for="(client, index) in state.clients">
+    <v-list lines="two">
+        <v-list-item
+            v-for="(client, index) in store.clients"
+            :key="client.id"
+        >
+            <ClientCard :client="client" />
+        </v-list-item>
+    </v-list>
+    <!-- <div v-else v-for="(client, index) in state.clients">
         <div class="clientsView--client-container">
         <ClientEdit
             v-if="isEditing === client.id"
@@ -41,7 +49,7 @@ import ClientEdit from '../components/ClientEdit.vue';
                 <button v-on:click="() => state.remove(client.id!)">Excluir</button>
             </div>
         </div>
-    </div>
+    </div> -->
 
 </template>
 

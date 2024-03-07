@@ -59,37 +59,61 @@ import { computed, ref } from 'vue';
 
 
 <template>
-    <div v-on:click="toggleProducts">
-        Produtos v
-    </div>
-    <div v-if="isProductsOpen">
-        <button v-on:click="openProductsModal" v-bind:disabled="notLinkedProducts.length === 0 || !client.active">Adicionar</button>
-        <div v-for="(product, index) in linkedProductsData">
-            {{ product.name }}
-            <button v-on:click="() => removeProductFromClient(product.id!)">x</button>
-        </div>
-    </div>
-    <Modal :is-open="isProductsModalOpen">
-        <div class="clientProduct--modal">
-            <div>
-                <div>Adicionar Produtos</div>
-                <button v-on:click="closeProductsModal">x</button>
-            </div>
-            <div v-for="(product, index) in notLinkedProducts">
-                <div v-on:click="() => selectProducts(product.id!)" :class="{'product-selected': selectedProducts.includes(product.id!)}">
-                    <span>
-                        {{ product.name }}
-                    </span>
-                    <span>
-                        {{ product.active ? "Sim" : "Não" }}
-                    </span>
-                </div>
-            </div>
-            <div>
-                <button v-on:click="addProductsToClient">Adicionar</button>
-            </div>
-        </div>
-    </Modal>
+    <v-expansion-panels>
+        <v-expansion-panel
+            title="Produtos"
+        >
+            <v-expansion-panel-text>
+                <v-toolbar>
+                    <v-dialog max-width="500">
+                        <template v-slot:activator="{props: activatorProps}">
+                        <v-spacer></v-spacer>
+                        <v-btn
+                            v-bind="activatorProps"
+                            text="Adicionar"
+                            variant="flat"
+                            :disabled="notLinkedProducts.length === 0 || !client.active"
+                        ></v-btn>
+                        </template>
+                        <template v-slot:default="{ isActive }">
+                        <v-card title="Adicionar Produtos">
+                            <v-list lines="one">
+                                <v-list-item
+                                    v-for="(product, index) in notLinkedProducts"
+                                    :title="product.name"
+                                    @click="() => selectProducts(product.id!)"
+                                    :class="{'product-selected': selectedProducts.includes(product.id!)}"
+                                >
+                                </v-list-item>
+                            </v-list>
+                            <v-card-actions>
+                                <v-btn
+                                text="Adicionar"
+                                @click="() => {addProductsToClient(); isActive.value = false}"
+                                ></v-btn>
+                                <v-btn
+                                text="Cancelar"
+                                @click="isActive.value = false"
+                                ></v-btn>
+                            </v-card-actions>
+                        </v-card>
+                        </template>
+                    </v-dialog>
+                </v-toolbar>
+                <v-list lines="one">
+                    <v-list-item v-for="(product, index) in linkedProductsData">
+                        <v-card
+                            :title="product.name"
+                        >
+                        <template v-slot:append>
+                            <v-btn text="deletar" @:click="() => removeProductFromClient(product.id!)"></v-btn>
+                        </template>
+                        </v-card>
+                    </v-list-item>
+                </v-list>
+            </v-expansion-panel-text>
+        </v-expansion-panel>
+    </v-expansion-panels>
 </template>
 
 
