@@ -28,26 +28,19 @@ import { useClientsStore } from '../stores/clients';
 </script>
 
 <template>
-    <div class="client--form">
-        <v-text-field label="Nome" v-model="clientName"></v-text-field>
-        <v-text-field label="Documento" v-model="clientDocument"></v-text-field>
-        <v-text-field label="Telefone" v-model="clientTelephone"></v-text-field>
-        <v-text-field label="E-mail" v-model="clientEmail"></v-text-field>
-        <v-switch
-            v-model="clientActive"
-            color="primary"
-            :label="clientActive ? 'Ativo' : 'Inativo'"
-            inset
-        ></v-switch>
-        <v-btn color="primary" @click="saveClient">Cadastrar</v-btn>
-    </div>
+    <v-text-field label="Nome" v-model="clientName"></v-text-field>
+    <v-text-field label="Documento" v-model="clientDocument"></v-text-field>
+    <v-text-field label="Telefone" v-model="clientTelephone"></v-text-field>
+    <v-text-field label="E-mail" v-model="clientEmail"></v-text-field>
+    <v-switch
+        v-model="clientActive"
+        color="primary"
+        :label="clientActive ? 'Ativo' : 'Inativo'"
+        inset
+    ></v-switch>
+    <v-btn color="primary" @click="saveClient">Cadastrar</v-btn>
 </template>
 
 
 <style scoped>
-    .client--form {
-        display: flex;
-        flex-direction: column;
-        padding: 10px;
-    }
 </style>

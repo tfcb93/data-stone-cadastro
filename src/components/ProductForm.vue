@@ -23,23 +23,16 @@ import { useProductsStore } from '../stores/products';
 </script>
 
 <template>
-    <div class="product--form">
-        <v-text-field label="Nome" v-model="productName"></v-text-field>
-        <v-switch
-            v-model="productActive"
-            color="primary"
-            :label="productActive ? 'Ativo' : 'Inativo'"
-            inset
-        ></v-switch>
-        <v-btn color="primary" @click="saveProduct">Cadastrar</v-btn>
-    </div>
+    <v-text-field label="Nome" v-model="productName"></v-text-field>
+    <v-switch
+        v-model="productActive"
+        color="primary"
+        :label="productActive ? 'Ativo' : 'Inativo'"
+        inset
+    ></v-switch>
+    <v-btn color="primary" @click="saveProduct">Cadastrar</v-btn>
 </template>
 
 
 <style scoped>
-    .product--form {
-        display: flex;
-        flex-direction: column;
-        padding: 10px;
-    }
 </style>

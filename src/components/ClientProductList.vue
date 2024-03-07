@@ -2,8 +2,7 @@
     import { useClientsStore } from '../stores/clients';
     import { useProductsStore } from '../stores/products';
     import { ClientType, ProductType } from '../types';
-    import Modal from '../components/Modal.vue';
-import { computed, ref } from 'vue';
+    import { computed, ref } from 'vue';
 
 
     const props = defineProps<{client: ClientType}>();
@@ -11,22 +10,7 @@ import { computed, ref } from 'vue';
     const clientsStore = useClientsStore();
     const productsStore = useProductsStore();
 
-    const isProductsModalOpen = ref<boolean>(false);
     const selectedProducts = ref<Array<string>>([]);
-    const isProductsOpen = ref<boolean>(false);
-
-    const openProductsModal = () => {
-        isProductsModalOpen.value = true;
-    }
-
-    const closeProductsModal = () => {
-        isProductsModalOpen.value = false;
-        selectedProducts.value = [];
-    }
-
-    const toggleProducts = () => {
-        isProductsOpen.value = !isProductsOpen.value;
-    }
 
     const selectProducts = (id: string) => {
         
@@ -40,7 +24,7 @@ import { computed, ref } from 'vue';
 
     const addProductsToClient = () => {
         clientsStore.addProducts(props.client.id!, selectedProducts.value);
-        closeProductsModal();
+        selectedProducts.value = [];
     }
 
     const removeProductFromClient = (id: string) => {
@@ -60,18 +44,20 @@ import { computed, ref } from 'vue';
 
 <template>
     <v-expansion-panels>
-        <v-expansion-panel
-            title="Produtos"
-        >
+        <v-expansion-panel title="Produtos">
             <v-expansion-panel-text>
-                <v-toolbar>
+                <v-col
+                class="text-grey"
+                cols="8"
+                >
+                <v-fade-transition leave-absolute>
                     <v-dialog max-width="500">
                         <template v-slot:activator="{props: activatorProps}">
-                        <v-spacer></v-spacer>
                         <v-btn
                             v-bind="activatorProps"
                             text="Adicionar"
-                            variant="flat"
+                            variant="elevated"
+                            color="primary"
                             :disabled="notLinkedProducts.length === 0 || !client.active"
                         ></v-btn>
                         </template>
@@ -93,21 +79,23 @@ import { computed, ref } from 'vue';
                                 ></v-btn>
                                 <v-btn
                                 text="Cancelar"
-                                @click="isActive.value = false"
+                                @click="() => {selectedProducts = []; isActive.value = false}"
                                 ></v-btn>
                             </v-card-actions>
                         </v-card>
                         </template>
                     </v-dialog>
-                </v-toolbar>
+                </v-fade-transition>
+                </v-col>
                 <v-list lines="one">
                     <v-list-item v-for="(product, index) in linkedProductsData">
-                        <v-card
-                            :title="product.name"
-                        >
-                        <template v-slot:append>
-                            <v-btn text="deletar" @:click="() => removeProductFromClient(product.id!)"></v-btn>
-                        </template>
+                        <v-card>
+                            <v-row justify="space-between" align="center">
+                                <v-card-title>
+                                    {{ product.name }}
+                                </v-card-title>
+                                <v-btn text="deletar" @:click="() => removeProductFromClient(product.id!)"></v-btn>
+                            </v-row>
                         </v-card>
                     </v-list-item>
                 </v-list>

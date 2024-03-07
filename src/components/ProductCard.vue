@@ -29,15 +29,4 @@ import { ProductType } from '../types';
 </template>
 
 <style scoped>
-
-.productcard {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-}
-
-.productcard--data__title {
-    font-weight: bold;
-}
-
 </style>

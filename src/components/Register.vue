@@ -18,7 +18,7 @@
           ></v-btn>
         </template>
         <template v-slot:default="{ isActive }">
-          <v-card title="Cadastro">
+          <v-card title="Cadastro" class="ma-2 pa-4">
             <v-card-actions>
                 <v-btn
                     text="Cliente"
@@ -46,34 +46,4 @@
 </template>
 
 <style scoped>
-.register {
-    border: 1px solid black;
-    border-radius: 4px;
-    min-width: 300px;
-    min-height: 300px;
-    background-color: white;
-    box-shadow: 0px 5px 1px black;
-
-}
-
-.register--header {
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-.register--close-button {
-    position: absolute;
-    top: 30%;
-    right: 8px;
-    text-align: center;
-    font-size: 10px;
-}
-
-.register--selector {
-    padding: 5px 10px;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-}
-</style>./ClientForm.vue./ProductForm.vue
+</style>

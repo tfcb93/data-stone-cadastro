@@ -25,28 +25,31 @@ import { ref } from 'vue';
     <div v-if="store.products.length <= 0">
         Não há produtos cadastrados
     </div>
-    <div v-else v-for="(product, index) in store.products">
-        <div class="productsView--product-container">
-            <ProductEdit
-                v-if="isEditing === product.id"
-                :product-name="product.name"
-                :product-active="product.active"
-                :id="product.id!"
-                :close-editing="closeEditing"
-            />
-            <ProductCard v-else :product="product" :edit="() => openEditing(product.id!)"/>
-        </div>
-    </div>
+
+    <v-container>
+        <v-row no-gutters>
+            <v-col
+                v-for="(product, index) in store.products"
+                :key="product.id"
+                cols="8"
+                md="4"
+            >
+                <v-sheet class="ma-2 pa-2">
+                    <ProductEdit
+                        v-if="isEditing === product.id"
+                        :product-name="product.name"
+                        :product-active="product.active"
+                        :id="product.id!"
+                        :close-editing="closeEditing"
+                    />
+                    <ProductCard v-else :product="product" :edit="() => openEditing(product.id!)"/>
+                </v-sheet>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <style scoped>
-.productsView--product-container {
-    /* border: 1px solid black;
-    padding: 5px 10px;
-    display: flex;
-    justify-content: space-between; */
-}
-
 .productsView--product-container__title {
     font-weight: regular;
 }
