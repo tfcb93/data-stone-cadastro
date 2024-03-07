@@ -33,7 +33,7 @@ import ClientEdit from '../components/ClientEdit.vue';
             </v-sheet>
         <v-list lines="two">
             <v-list-item
-                v-for="(client, index) in store.clients"
+                v-for="(client) in store.clients"
                 :key="client.id"
             >
                 <ClientEdit

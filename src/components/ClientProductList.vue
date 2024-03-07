@@ -68,7 +68,7 @@
                             </v-card-title>
                             <v-list lines="one">
                                 <v-list-item
-                                    v-for="(product, index) in notLinkedProducts"
+                                    v-for="(product) in notLinkedProducts"
                                     :title="product.name"
                                     @click="() => selectProducts(product.id!)"
                                     :class="{'bg-primary': selectedProducts.includes(product.id!)}"

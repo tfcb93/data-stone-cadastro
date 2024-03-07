@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ClientType, ProductType } from "../types";
+import { ClientType } from "../types";
 import { v4 as uuidv4 } from 'uuid';
 
 export const useClientsStore = defineStore('clients', {

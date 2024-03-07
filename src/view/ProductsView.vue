@@ -35,7 +35,7 @@ import { ref } from 'vue';
         </v-sheet>
         <v-row no-gutters>
             <v-col
-                v-for="(product, index) in store.products"
+                v-for="(product) in store.products"
                 :key="product.id"
                 cols="12"
                 md="4"
