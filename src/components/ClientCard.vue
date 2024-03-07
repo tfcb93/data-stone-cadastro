@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ClientType } from '../types';
+import ClientProductList from '../components/ClientProductList.vue';
 
 
     defineProps<{client: ClientType}>();
@@ -38,14 +39,10 @@ import { ClientType } from '../types';
                 {{ client.active ? "Sim" : "Não" }}
             </span>
         </div>
+        <div>
+            <ClientProductList :client="client" />
+        </div>
     </div>
-    <!-- <div>
-        # produtos
-    </div>
-    <div class="clientsView--options">
-        <button v-on:click="state.remove(client.id!)">D</button>
-        <button v-on:click="openEditing">E</button>
-    </div> -->
 </template>
 
 <style scoped>
