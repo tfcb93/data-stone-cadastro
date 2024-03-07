@@ -1,26 +1,31 @@
 <script setup lang="ts">
+import { useProductsStore } from '../stores/products';
 import { ProductType } from '../types';
 
 
-    defineProps<{product: ProductType}>();
+    const props = defineProps<{
+        product: ProductType,
+        edit: () => void
+    }>();
+
+    const store = useProductsStore();
+
 
 </script>
 
 <template>
-    <div class="productcard">
-        <div class="productcard--data productcard--data__name">
-            <span class="productcard--data__title">Nome: </span>
-            <span class="productcard--data__data">
-                {{ product.name }}
-            </span>
-        </div>
-        <div class="productcard--data productcard--data__active">
-            <span class="productcard--data__title">Ativo: </span>
-            <span class="productcard--data__data">
-                {{ product.active ? "Sim" : "Não" }}
-            </span>
-        </div>
-    </div>
+    <v-card>
+        <template v-slot:title>
+            {{ product.name }}
+        </template>
+        <v-card-text>
+            Ativo: {{ product.active ? "Sim" : "Não" }}
+        </v-card-text>
+        <v-card-actions>
+            <v-btn colort="primary" text="editar" @:click="props.edit"></v-btn>
+            <v-btn color="warning" text="deletar" @:click="() => store.remove(product.id!)"></v-btn>
+        </v-card-actions>
+    </v-card>
 </template>
 
 <style scoped>
