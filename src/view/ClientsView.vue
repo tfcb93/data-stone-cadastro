@@ -58,23 +58,5 @@ import ClientEdit from '../components/ClientEdit.vue';
 </template>
 
 <style scoped>
-.clientsView--client-container {
-    border: 1px solid black;
-    padding: 5px 10px;
-    display: flex;
-    justify-content: space-between;
-}
 
-.clientsView--client-container__title {
-    font-weight: regular;
-}
-
-.clientsView--client-options {
-    display: flex;
-    flex-direction: column;
-}
-
-.clientsView--client-container__data {
-    font-weight: bold;
-}
 </style>

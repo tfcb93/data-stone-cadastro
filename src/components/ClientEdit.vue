@@ -53,40 +53,4 @@
 
 <style scoped>
 
-.client-edit--title {
-    font-size: 18px;
-    font-weight: bold;
-    padding-bottom: 20px;
-}
-
-.client-edit--container {
-    display: flex;
-}
-
-.client-edit--form {
-    display: flex;
-    flex-direction: column;
-}
-
-.client-edit--options {
-    display: flex;
-    flex-direction: column;
-    padding-left: 20px;
-    gap: 5px;
-    justify-content: start;
-}
-
-.client-edit--form-input:not(.client-edit--form-input__active) {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.client-edit--form-input__label {
-    font-weight: bold;
-}
-
-.client-edit--form-input__active {
-    display: flex;
-}
 </style>

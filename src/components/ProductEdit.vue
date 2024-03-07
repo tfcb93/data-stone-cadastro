@@ -43,41 +43,4 @@
 </template>
 
 <style scoped>
-
-.product-edit--title {
-    font-size: 18px;
-    font-weight: bold;
-    padding-bottom: 20px;
-}
-
-.product-edit--container {
-    display: flex;
-}
-
-.product-edit--form {
-    display: flex;
-    flex-direction: column;
-}
-
-.product-edit--options {
-    display: flex;
-    flex-direction: column;
-    padding-left: 20px;
-    gap: 5px;
-    justify-content: start;
-}
-
-.product-edit--form-input:not(.product-edit--form-input__active) {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.product-edit--form-input__label {
-    font-weight: bold;
-}
-
-.product-edit--form-input__active {
-    display: flex;
-}
 </style>

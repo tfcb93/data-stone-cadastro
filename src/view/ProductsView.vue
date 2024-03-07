@@ -56,16 +56,4 @@ import { ref } from 'vue';
 </template>
 
 <style scoped>
-.productsView--product-container__title {
-    font-weight: regular;
-}
-
-.productsView--product-options {
-    display: flex;
-    flex-direction: column;
-}
-
-.productsView--product-container__data {
-    font-weight: bold;
-}
 </style>
