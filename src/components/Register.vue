@@ -1,33 +1,48 @@
 <script setup lang="ts">
     import { ref } from 'vue';
-    import Client from './Client.vue';
-    import Product from './Product.vue';
+    import ClientForm from './ClientForm.vue';
+    import ProductForm from './ProductForm.vue';
     import { registerEnum } from '../enum';
 
-    defineProps<{
-        closeModal?:any
-    }>();
-
-
     const screenType = ref<registerEnum>(registerEnum.CLIENTE);
+
 </script>
 
-
 <template>
-    <div class="register">
-        <div class="register--header">
-            <h3>Cadastro</h3>
-            <button v-if="closeModal" class="register--close-button" v-on:click="closeModal">X</button>
-        </div>
-        <div class="register--selector">
-            <button @click="screenType = registerEnum.CLIENTE">Cliente</button>
-            <button @click="screenType = registerEnum.PRODUTO">Produto</button>
-        </div>
-        <div class="register--form-container">
-            <Client v-if="screenType === registerEnum.CLIENTE" :close-modal="closeModal" />
-            <Product v-else :close-modal="closeModal" />
-        </div>
-    </div>
+    <v-dialog max-width="500">
+        <template v-slot:activator="{props: activatorProps}">
+          <v-btn
+            v-bind="activatorProps"
+            text="Adicionar"
+            variant="flat"
+          ></v-btn>
+        </template>
+        <template v-slot:default="{ isActive }">
+          <v-card title="Cadastro">
+            <v-card-actions>
+                <v-btn
+                    text="Cliente"
+                    @click="screenType = registerEnum.CLIENTE"
+                    :active="screenType === registerEnum.CLIENTE"
+                    color="primary"
+                ></v-btn>
+                <v-btn
+                    text="Produto"
+                    @click="screenType = registerEnum.PRODUTO"
+                    :active="screenType === registerEnum.PRODUTO"
+                    color="primary"
+                ></v-btn>
+                <v-spacer></v-spacer>
+                <v-btn
+                icon="$close"
+                @click="isActive.value = false"
+                ></v-btn>
+            </v-card-actions>
+            <ClientForm v-if="screenType === registerEnum.CLIENTE" :close-modal="() => isActive.value = false" />
+            <ProductForm v-else :close-modal="() => isActive.value = false" />
+        </v-card>
+        </template>
+      </v-dialog>
 </template>
 
 <style scoped>
@@ -61,4 +76,4 @@
     justify-content: center;
     gap: 25px;
 }
-</style>
+</style>./ClientForm.vue./ProductForm.vue

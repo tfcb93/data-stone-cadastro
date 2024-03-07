@@ -14,13 +14,7 @@
   const changeView = (val: string) => {
     actualView.value = val
   }
-
-  const openModal = () => {
-    showModal.value = true;
-  }
-  const closeModal = () => {
-    showModal.value = false;
-  }
+  
 </script>
 
 <template>
@@ -30,14 +24,12 @@
   </header>
   <button v-on:click="() => changeView('clients')">Clientes</button>
   <button v-on:click="() => changeView('products')">Produtos</button>
-  <button v-on:click="openModal">Adicionar</button>
+  <Register />
+  <!-- <button v-on:click="openModal">Adicionar</button> -->
   <ClientsView v-if="actualView === 'clients'" />
   <ProductsView v-if="actualView === 'products'" />
-  <Modal :is-open="showModal">
-    <div>
-      <Register :close-modal="closeModal" />
-    </div>
-  </Modal>
+  <!-- <Modal :is-open="showModal">
+  </Modal> -->
 </template>
 
 <style scoped>
