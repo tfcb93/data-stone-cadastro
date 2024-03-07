@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { ref } from 'vue';
-  import Modal from './components/Modal.vue'
+  import NavBar from './components/NavBar.vue';
+  import Modal from './components/Modal.vue';
   import ClientsView from './view/ClientsView.vue';
   import ProductsView from './view/ProductsView.vue';
   import Register from './components/Register.vue';
@@ -23,9 +24,7 @@
 </script>
 
 <template>
-  <nav>
-    Data Stone
-  </nav>
+  <NavBar />
   <header>
     Header
   </header>
