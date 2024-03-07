@@ -27,58 +27,25 @@
         props.closeEditing();
     }
 
-    const cancelEdit = () => {
-        props.closeEditing();
-    }
-
 </script>
 
 <template>
-    <div>
-        <div class="client-edit--title">
-            Editar cliente
-        </div>
-        <div class="client-edit--container">
-            <div class="client-edit--form">
-                <span class="client-edit--form-input">
-                    <label class="client-edit--form-input__label" for="name">Nome: </label>
-                    <input v-model="clientName" id="name" type="text" />
-                </span>
-                <span class="client-edit--form-input">
-                    <label class="client-edit--form-input__label" for="document">Documento: </label>
-                    <input v-model="clientDocument" id="document" type="text" />
-                </span>
-                <span class="client-edit--form-input">
-                    <label class="client-edit--form-input__label" for="telephone">Telefone: </label>
-                    <input v-model="clientTelephone" id="telephone" type="text" />
-                </span>
-                <span class="client-edit--form-input">
-                    <label class="client-edit--form-input__label" for="email">E-mail: </label>
-                    <input v-model="clientEmail" id="email" type="text" />
-                </span>
-                <span class="client-edit--form-input client-edit--form-input__active">
-                    
-                    <legend>Ativo: </legend>
-                    <span>
-                        <input id="active-yes" type="radio" v-model="clientActive" :value="true" />
-                        <label for="active-yes">Sim</label>
-                    </span>
-                    <span>
-                        <input id="active-no" type="radio" v-model="clientActive" :value="false" />
-                        <label for="active-no">Não</label>
-                    </span>
-                </span>
-            </div>
-            <div class="client-edit--options">
-                <button v-on:click="saveClient">
-                    Atualizar
-                </button>
-                <button v-on:click="cancelEdit">
-                    Cancelar
-                </button>
-            </div>
-        </div>
-    </div>
+    <v-card title="Editar Cliente">
+        <v-text-field label="Nome" v-model="clientName"></v-text-field>
+        <v-text-field label="Nome" v-model="clientDocument"></v-text-field>
+        <v-text-field label="Nome" v-model="clientTelephone"></v-text-field>
+        <v-text-field label="Nome" v-model="clientEmail"></v-text-field>
+        <v-switch
+            v-model="clientActive"
+            color="primary"
+            :label="clientActive ? 'Ativo' : 'Inativo'"
+            inset
+        ></v-switch>
+        <v-card-actions>
+            <v-btn color="primary" @click="saveClient">Editar</v-btn>
+            <v-btn color="secondary" @click="props.closeEditing">Cancelar</v-btn>
+        </v-card-actions>
+    </v-card>
 
 </template>
 

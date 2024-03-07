@@ -3,12 +3,21 @@ import { ClientType } from '../types';
 import ClientProductList from '../components/ClientProductList.vue';
 
 
-    defineProps<{client: ClientType}>();
+    defineProps<{
+        client: ClientType,
+        openEditing: () => void,
+        deleteClient: () => void
+    }>();
 
 </script>
 
 <template>
     <v-card :title="client.name">
+        <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn text="Editar" @click="openEditing"></v-btn>
+            <v-btn text="Excluir" @click="deleteClient"></v-btn>
+        </v-card-actions>
         <v-table class="text-caption" density="compact">
             <tbody>
                 <tr align="right">
@@ -29,10 +38,8 @@ import ClientProductList from '../components/ClientProductList.vue';
                 </tr>
             </tbody>
         </v-table>
+        <ClientProductList :client="client" />
     </v-card>
-        <div>
-            <ClientProductList :client="client" />
-        </div>
 </template>
 
 <style scoped>

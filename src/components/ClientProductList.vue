@@ -119,10 +119,6 @@ import { computed, ref } from 'vue';
 
 <style scoped>
 
-.clientProduct--modal {
-    background-color: white;
-}
-
 .product-selected {
     background-color: blue;
 }
