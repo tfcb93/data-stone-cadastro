@@ -24,7 +24,10 @@
 </script>
 
 <template>
-    <v-card title="Editar Produto">
+    <v-card class="pa-4">
+        <v-card-title>
+            Editar Produto
+        </v-card-title>
         <v-text-field label="Nome" v-model="productName"></v-text-field>
         <v-switch
             v-model="productActive"

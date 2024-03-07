@@ -62,13 +62,16 @@
                         ></v-btn>
                         </template>
                         <template v-slot:default="{ isActive }">
-                        <v-card title="Adicionar Produtos">
+                        <v-card>
+                            <v-card-title class="px-4">
+                                Adicionar Produtos
+                            </v-card-title>
                             <v-list lines="one">
                                 <v-list-item
                                     v-for="(product, index) in notLinkedProducts"
                                     :title="product.name"
                                     @click="() => selectProducts(product.id!)"
-                                    :class="{'product-selected': selectedProducts.includes(product.id!)}"
+                                    :class="{'bg-primary': selectedProducts.includes(product.id!)}"
                                 >
                                 </v-list-item>
                             </v-list>
@@ -109,9 +112,5 @@
 
 
 <style scoped>
-
-.product-selected {
-    background-color: blue;
-}
 
 </style>
