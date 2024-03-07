@@ -13,6 +13,7 @@ import { computed, ref } from 'vue';
 
     const isProductsModalOpen = ref<boolean>(false);
     const selectedProducts = ref<Array<string>>([]);
+    const isProductsOpen = ref<boolean>(false);
 
     const openProductsModal = () => {
         isProductsModalOpen.value = true;
@@ -21,6 +22,10 @@ import { computed, ref } from 'vue';
     const closeProductsModal = () => {
         isProductsModalOpen.value = false;
         selectedProducts.value = [];
+    }
+
+    const toggleProducts = () => {
+        isProductsOpen.value = !isProductsOpen.value;
     }
 
     const selectProducts = (id: string) => {
@@ -54,10 +59,10 @@ import { computed, ref } from 'vue';
 
 
 <template>
-    <div>
+    <div v-on:click="toggleProducts">
         Produtos v
     </div>
-    <div>
+    <div v-if="isProductsOpen">
         <button v-on:click="openProductsModal" v-bind:disabled="notLinkedProducts.length === 0 || !client.active">Adicionar</button>
         <div v-for="(product, index) in linkedProductsData">
             {{ product.name }}
