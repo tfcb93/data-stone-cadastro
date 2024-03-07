@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, test } from 'vitest';
 import { useClientsStore } from '../stores/clients';
 import { ClientType } from '../types';
 import { createPinia, setActivePinia } from 'pinia';
+import { useProductsStore } from '../stores/products';
 
 describe('Client tests', () => {
     beforeEach(() => {
@@ -57,7 +58,70 @@ describe('Client tests', () => {
                 ]
             )
         )
-    })
+    });
+    test('Adds products to a client', () => {
+
+        const clientStore = useClientsStore();
+        const productStore = useProductsStore();
+
+        const client1Id: string = clientStore.create({name: 'John Doe', document: 'blank', telephone: '999-9999', email: 'johndoe@test.com', active: true});
+        const product1Id: string = productStore.create({name: "Pencil", active: true});
+        const product2Id: string = productStore.create({name: "Eraser", active: false});
+        const product3Id: string = productStore.create({name: "Sharpner", active: false});
+
+        clientStore.addProducts(client1Id, [product1Id, product2Id, product3Id]);
+
+        expect(clientStore.clients).toEqual(
+            expect.arrayContaining(
+                [
+                    expect.objectContaining(
+                        {
+                            id: client1Id,
+                            name: 'John Doe',
+                            document: 'blank',
+                            telephone: '999-9999',
+                            email: 'johndoe@test.com',
+                            active: true,
+                            products: [product1Id, product2Id, product3Id]
+                        }
+                    )
+                ]
+            )
+        )
+    });
+
+    test('Remove products from a client', () => {
+        const clientStore = useClientsStore();
+        const productStore = useProductsStore();
+
+        const client1Id: string = clientStore.create({name: 'John Doe', document: 'blank', telephone: '999-9999', email: 'johndoe@test.com', active: true});
+        const product1Id: string = productStore.create({name: "Pencil", active: true});
+        const product2Id: string = productStore.create({name: "Eraser", active: false});
+        const product3Id: string = productStore.create({name: "Sharpner", active: false});
+
+        clientStore.addProducts(client1Id, [product1Id, product2Id, product3Id]);
+
+        clientStore.removeProducts(client1Id, [product2Id]);
+
+        expect(clientStore.clients).toEqual(
+            expect.arrayContaining(
+                [
+                    expect.objectContaining(
+                        {
+                            id: client1Id,
+                            name: 'John Doe',
+                            document: 'blank',
+                            telephone: '999-9999',
+                            email: 'johndoe@test.com',
+                            active: true,
+                            products: [product1Id, product3Id]
+                        }
+                    )
+                ]
+            )
+        )
+
+    });
     
 
-})
+});
